@@ -1,6 +1,6 @@
 module RmtCtrl
 
-    class Server
+    class Daemon
 
         attr_reader :page, :page_count
         

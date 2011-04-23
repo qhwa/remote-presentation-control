@@ -2,10 +2,10 @@
 require 'test/unit'
 require '../remote-pst-ctrl'
 
-class RemoteCtrolServerTest < Test::Unit::TestCase
+class RemoteCtrolDaemonTest < Test::Unit::TestCase
 
     def setup
-        @server = RmtCtrl::Server.new
+        @server = RmtCtrl::Daemon.new
         @server.page_count = 10
         @server.start
     end
@@ -13,8 +13,8 @@ class RemoteCtrolServerTest < Test::Unit::TestCase
     def test_create
         assert_equal 0, @server.page
 
-        assert RmtCtrl::Server.create
-        RmtCtrl::Server.create do |srv| 
+        assert RmtCtrl::Daemon.create
+        RmtCtrl::Daemon.create do |srv| 
             assert_equal 0, srv.page 
         end
     end
