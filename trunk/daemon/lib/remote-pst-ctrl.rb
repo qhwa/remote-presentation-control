@@ -1,6 +1,6 @@
-module RmtCtrl
+module RmtPst
 
-    class Daemon
+    class Ctrl
 
         attr_reader :page, :page_count
         
@@ -40,9 +40,12 @@ module RmtCtrl
         end
 
         def page=( p )
-            @page = p.to_i
+            p = p.to_i
+            unless p == @page
+                @page = p.to_i 
+            end
         end
-
+    
         def page_count=( cnt )
             @page_count = cnt
         end
@@ -50,5 +53,3 @@ module RmtCtrl
     end
 
 end
-
-

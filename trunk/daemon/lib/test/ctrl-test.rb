@@ -1,11 +1,10 @@
 #/usr/bin/env ruby
-require 'test/unit'
-require '../remote-pst-ctrl'
+require "#{File.dirname(File.expand_path(__FILE__))}/remote-pst-test.rb"
 
-class RemoteCtrolDaemonTest < Test::Unit::TestCase
-
+class RmtPstCtrlTest < RmtPstTest
+    
     def setup
-        @server = RmtCtrl::Daemon.new
+        @server = RmtPst::Ctrl.new
         @server.page_count = 10
         @server.start
     end
@@ -13,8 +12,8 @@ class RemoteCtrolDaemonTest < Test::Unit::TestCase
     def test_create
         assert_equal 0, @server.page
 
-        assert RmtCtrl::Daemon.create
-        RmtCtrl::Daemon.create do |srv| 
+        assert RmtPst::Ctrl.create
+        RmtPst::Ctrl.create do |srv| 
             assert_equal 0, srv.page 
         end
     end
@@ -58,7 +57,5 @@ class RemoteCtrolDaemonTest < Test::Unit::TestCase
         @server.stop
         assert_equal 1, @server.resume
     end
-    
-
 
 end
